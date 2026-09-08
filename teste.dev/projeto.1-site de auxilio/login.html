@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | Rota Acadêmica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>try{var t=localStorage.getItem("rotaAcademica_theme")||"light";if(t==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.gov.br">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="dns-prefetch" href="https://www.gov.br">
+  <link rel="dns-prefetch" href="https://www.salario.com.br">
+  <link rel="dns-prefetch" href="https://emec.mec.gov.br">
+  <link rel="dns-prefetch" href="https://www.eb.mil.br">
+  <link rel="dns-prefetch" href="https://www.marinha.mil.br">
+  <link rel="dns-prefetch" href="https://www2.fab.mil.br">
+  <script src="inep-data.js?v=9"></script><script src="script.js?v=9" defer></script>
+</head>
+<body class="app-page" data-page="login">
+  <header class="app-header container">
+    <a class="brand" href="login.html"><span class="brand-mark">R</span><span>Rota Acadêmica</span></a>
+    <button data-theme-toggle class="button button-ghost theme-toggle" type="button" title="Alternar tema claro/escuro" aria-label="Alternar tema claro ou escuro">🌙</button>
+  </header>
+
+  <main class="container questionnaire-layout">
+    <aside class="steps-panel">
+      <p class="eyebrow">SUA CONTA</p>
+      <h1 id="login-title">Bem-vindo de volta.</h1>
+      <p id="login-sub">Entre com usuário, e-mail ou telefone — confirmamos com um código.</p>
+      <p class="ranking-note">Cada login guarda seu próprio progresso — perfil, respostas, cursos, carreira e cronograma — do começo ao fim, neste navegador.</p>
+    </aside>
+
+    <section class="question-card" aria-live="polite">
+      <div class="form-navigation" style="margin-top:0; justify-content:flex-start">
+        <button id="mode-login" class="button button-primary selected" type="button">Entrar</button>
+        <button id="mode-register" class="button button-ghost" type="button">Criar conta</button>
+      </div>
+
+      <!-- Etapa 1: credenciais -->
+      <form id="login-form" autocomplete="off" style="margin-top:24px">
+        <div class="location-selects" style="grid-template-columns:1fr">
+          <label class="field-label" id="label-login-user">Usuário, e-mail ou telefone<input id="login-user" type="text" autocomplete="username" placeholder="ex.: maria.silva" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:7px"></label>
+          <div id="contact-choice" hidden style="margin:2px 0 4px">
+            <p class="eyebrow" style="margin-bottom:8px">COMO VAMOS TE CONFIRMAR?</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button id="contact-email-btn" class="button button-primary" type="button" style="min-height:44px">✉️ E-mail</button>
+              <button id="contact-phone-btn" class="button button-ghost" type="button" style="min-height:44px">📱 Telefone</button>
+            </div>
+          </div>
+          <label class="field-label" id="label-login-email" hidden>E-mail<input id="login-email" type="email" autocomplete="email" maxlength="80" placeholder="voce@email.com" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:7px"></label>
+          <label class="field-label" id="label-login-phone" hidden>Telefone (com DDD)<input id="login-phone" type="tel" autocomplete="tel" maxlength="20" placeholder="(11) 98765-4321" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:7px"></label>
+          <label class="field-label" id="label-login-pass">Senha<input id="login-pass" type="password" autocomplete="new-password" maxlength="60" placeholder="mínimo 4 caracteres" required style="width:100%;padding:12px;border:1px solid var(--line);border-radius:7px"></label>
+          <div id="pass-meter-box" hidden style="margin-top:8px">
+            <div class="pass-meter"><span id="pass-meter-fill"></span></div>
+            <p id="pass-label" class="ranking-note" style="margin:6px 0 0"></p>
+            <p class="ranking-note" style="margin:4px 0 0">Dica: use 8+ caracteres misturando maiúsculas, números e símbolos (!@#...).</p>
+          </div>
+        </div>
+        <p id="login-error" class="ranking-note" hidden style="color:#b3261e"></p>
+        <div class="form-navigation">
+          <span></span>
+          <button id="login-submit" class="button button-primary" type="submit">Continuar →</button>
+        </div>
+      </form>
+
+      <!-- Etapa 2: escolher onde receber o código -->
+      <div id="step-channel" hidden style="margin-top:24px">
+        <p class="eyebrow">CONFIRMAÇÃO DE IDENTIDADE</p>
+        <h2 style="font-family:'Space Grotesk',sans-serif;margin:0 0 8px">Onde enviamos seu código?</h2>
+        <p class="ranking-note">Enviamos uma senha de 6 dígitos, válida por 5 minutos.</p>
+        <div id="channel-options" class="options"></div>
+        <div class="form-navigation">
+          <button id="channel-back" class="button button-ghost" type="button">← Voltar</button>
+          <button id="channel-send" class="button button-primary" type="button">Enviar código →</button>
+        </div>
+      </div>
+
+      <!-- Etapa 3: digitar o código -->
+      <div id="step-code" hidden style="margin-top:24px">
+        <p class="eyebrow">DIGITE O CÓDIGO</p>
+        <h2 style="font-family:'Space Grotesk',sans-serif;margin:0 0 8px">Confira seu e-mail ou telefone</h2>
+        <p id="code-sent-to" class="ranking-note"></p>
+        <div id="send-status" class="entry-plan-card" hidden style="margin:14px 0"></div>
+        <label class="field-label">Código de 6 dígitos<input id="login-code" type="text" inputmode="numeric" maxlength="6" placeholder="000000" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:7px;letter-spacing:.3em;text-align:center;font-size:1.2rem"></label>
+        <p id="code-error" class="ranking-note" hidden style="color:#b3261e"></p>
+        <div class="form-navigation">
+          <button id="code-back" class="button button-ghost" type="button">← Voltar</button>
+          <div style="display:flex;gap:10px">
+            <button id="code-resend" class="button button-ghost" type="button">Reenviar</button>
+            <button id="code-verify" class="button button-primary" type="button">Verificar →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
