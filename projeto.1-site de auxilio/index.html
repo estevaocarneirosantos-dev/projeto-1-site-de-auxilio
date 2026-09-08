@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubra cursos compatíveis e organize sua preparação acadêmica.">
+  <title>Rota Acadêmica | Encontre seu curso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.gov.br">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="dns-prefetch" href="https://www.gov.br">
+  <link rel="dns-prefetch" href="https://www.salario.com.br">
+  <link rel="dns-prefetch" href="https://emec.mec.gov.br">
+  <link rel="dns-prefetch" href="https://www.eb.mil.br">
+  <link rel="dns-prefetch" href="https://www.marinha.mil.br">
+  <link rel="dns-prefetch" href="https://www2.fab.mil.br">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>try{var t=localStorage.getItem("rotaAcademica_theme")||"light";if(t==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="landing-page" data-page="landing">
+  <div class="academic-background" aria-hidden="true">
+    <span class="formula formula-one">E = mc<sup>2</sup></span>
+    <span class="formula formula-two">H<sub>2</sub>O + CO<sub>2</sub></span>
+    <span class="formula formula-three">a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></span>
+    <span class="formula formula-four">Fe · Au · Na · C</span>
+    <span class="formula formula-five">F = m · a</span>
+    <span class="formula formula-six">Brasil · Mundo · Ideias</span>
+    <div class="orbit orbit-one"></div>
+    <div class="orbit orbit-two"></div>
+    <div class="map-shape"></div>
+  </div>
+
+  <header class="site-header container">
+    <a class="brand" href="index.html" aria-label="Rota Acadêmica, início">
+      <span class="brand-mark">R</span>
+      <span>Rota Acadêmica</span>
+    </a>
+    <div style="display:flex;gap:12px;align-items:center"><span class="header-tag">Seu próximo passo começa aqui</span><span data-user-chip class="header-tag"></span><button data-theme-toggle class="button button-ghost theme-toggle" type="button" title="Alternar tema claro/escuro" aria-label="Alternar tema claro ou escuro">🌙</button><button data-logout class="button button-ghost" type="button" style="min-height:36px;padding:6px 12px;font-size:.82rem">Sair</button></div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <p class="eyebrow">ORIENTAÇÃO PARA A DOCÊNCIA</p>
+        <h1>Descubra o futuro que faz sentido para <em>você!</em></h1>
+        <p class="hero-text">Responda perguntas sobre seus interesses e habilidades, conheça cursos compatíveis e compare instituições na sua região.</p>
+        <form id="student-profile-form" class="profile-form">
+          <p class="eyebrow" style="margin-bottom:12px">Olá, <strong id="profile-hello">estudante</strong>! Complete seu perfil 👇</p>
+          <div class="profile-grid">
+            <label>Data de nascimento<input id="student-birthdate" name="birthdate" type="text" inputmode="numeric" maxlength="10" placeholder="dd/mm/aaaa" required></label>
+            <label>Em qual etapa você está?<select id="student-grade" name="grade" required><option value="">Selecione</option><option>9º ano do Ensino Fundamental</option><option>1ª série do Ensino Médio</option><option>2ª série do Ensino Médio</option><option>3ª série do Ensino Médio</option><option>Ensino Médio concluído</option><option>Outro momento de estudo</option></select></label>
+            <label>Tipo de escola<select id="student-school" name="school" required><option value="">Selecione</option><option value="publica">Pública</option><option value="particular">Particular</option><option value="outra">Outra</option></select></label>
+            <fieldset class="profile-full" style="border:0;margin:0;padding:0"><legend style="font-size:.78rem;font-weight:700;padding:0;margin-bottom:6px">Objetivos principais (marque quantos quiser)</legend>
+              <label class="option" style="padding:10px 12px"><input type="checkbox" name="entryPath" value="enem"><span class="option-mark option-checkbox"></span><span class="option-text">ENEM</span></label>
+              <label class="option" style="padding:10px 12px"><input type="checkbox" name="entryPath" value="vestibular"><span class="option-mark option-checkbox"></span><span class="option-text">Vestibular tradicional</span></label>
+              <label class="option" style="padding:10px 12px"><input type="checkbox" name="entryPath" value="militar"><span class="option-mark option-checkbox"></span><span class="option-text">Provas militares brasileiras</span></label>
+            </fieldset>
+          </div>
+          <div class="hero-actions">
+            <button id="start-button" class="button button-primary" type="submit">Montar meu caminho <span aria-hidden="true">→</span></button>
+            <a class="button button-ghost" href="#como-funciona">Como funciona</a>
+          </div>
+          <p id="profile-error" class="ranking-note" hidden style="color:#b3261e;margin:10px 0 0"></p>
+        </form>
+        <p class="small-note">Leva cerca de 3 minutos. Seus dados ficam somente neste navegador.</p>
+      </div>
+
+      <aside class="hero-panel" aria-label="Resumo das etapas">
+        <p class="panel-label">SUA JORNADA</p>
+        <ol class="journey-list">
+          <li><span>01</span><div><strong>Conte sobre você</strong><small>Etapa escolar, interesses e objetivo.</small></div></li>
+          <li><span>02</span><div><strong>Encontre possibilidades</strong><small>Cursos compatíveis com seu perfil.</small></div></li>
+          <li><span>03</span><div><strong>Defina sua forma de ingresso</strong><small>ENEM, vestibular ou militar.</small></div></li>
+          <li><span>04</span><div><strong>Prepare-se</strong><small>Receba um cronograma semanal focado na meta.</small></div></li>
+        </ol>
+      </aside>
+    </section>
+
+    <section id="como-funciona" class="features container">
+      <div class="section-heading">
+        <p class="eyebrow">UMA DECISÃO MAIS CLARA</p>
+        <h2>Planeje com informação, não com pressão.</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-icon">01</span><h3>Perfil acadêmico</h3><p>Uma avaliação objetiva transforma suas respostas em áreas e cursos com maior afinidade.</p></article>
+        <article class="feature-card"><span class="feature-icon">02</span><h3>Escolha consciente</h3><p>Filtre instituições por estado, cidade e categoria, com indicadores de qualidade por curso.</p></article>
+        <article class="feature-card"><span class="feature-icon">03</span><h3>Rotina possível</h3><p>Organize uma semana de estudos com prioridades adequadas ao curso escolhido.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>Rota Acadêmica · Projeto educacional</p>
+    <p>Indicadores: referência INEP/MEC</p>
+  </footer>
+
+  <script src="inep-data.js?v=9"></script><script src="script.js?v=9"></script>
+</body>
+</html>
