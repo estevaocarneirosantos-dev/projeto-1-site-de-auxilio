@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionário | Rota Acadêmica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.gov.br">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="dns-prefetch" href="https://www.gov.br">
+  <link rel="dns-prefetch" href="https://www.salario.com.br">
+  <link rel="dns-prefetch" href="https://emec.mec.gov.br">
+  <link rel="dns-prefetch" href="https://www.eb.mil.br">
+  <link rel="dns-prefetch" href="https://www.marinha.mil.br">
+  <link rel="dns-prefetch" href="https://www2.fab.mil.br">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>try{var t=localStorage.getItem("rotaAcademica_theme")||"light";if(t==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./inep-data.js"></script><script src="./script.js" defer></script>
+</head>
+<body class="app-page" data-page="questionnaire">
+  <header class="app-header container">
+    <a class="brand" href="index.html"><span class="brand-mark">R</span><span>Rota Acadêmica</span></a>
+    <div style="display:flex;gap:12px;align-items:center"><span data-user-chip class="header-tag"></span><button data-theme-toggle class="button button-ghost theme-toggle" type="button" title="Alternar tema claro/escuro" aria-label="Alternar tema claro ou escuro">🌙</button><a class="back-link" href="index.html">← Voltar ao início</a><button data-logout class="button button-ghost" type="button" style="min-height:36px;padding:6px 12px;font-size:.82rem">Sair</button></div>
+  </header>
+
+  <main class="container questionnaire-layout">
+    <aside class="steps-panel">
+       <p class="eyebrow">ETAPA 2 DE 5</p>
+       <h1 id="profile-greeting">Vamos conhecer seu jeito de aprender.</h1>
+       <p id="profile-context">Não existem respostas certas. Marque todas as opções que combinam com você em cada pergunta.</p>
+      <div class="progress-track"><span id="progress-bar"></span></div>
+       <p id="progress-text" class="progress-text">Pergunta 1 de 11</p>
+    </aside>
+
+    <section class="question-card" aria-live="polite">
+      <form id="questionnaire-form">
+        <div id="question-content"></div>
+        <div class="form-navigation">
+          <button id="previous-question" class="button button-ghost" type="button">← Anterior</button>
+          <button id="next-question" class="button button-primary" type="button">Próxima →</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

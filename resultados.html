@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos sugeridos | Rota Acadêmica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.gov.br">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="dns-prefetch" href="https://www.gov.br">
+  <link rel="dns-prefetch" href="https://www.salario.com.br">
+  <link rel="dns-prefetch" href="https://emec.mec.gov.br">
+  <link rel="dns-prefetch" href="https://www.eb.mil.br">
+  <link rel="dns-prefetch" href="https://www.marinha.mil.br">
+  <link rel="dns-prefetch" href="https://www2.fab.mil.br">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>try{var t=localStorage.getItem("rotaAcademica_theme")||"light";if(t==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./inep-data.js"></script><script src="./script.js" defer></script>
+</head>
+<body class="app-page" data-page="results">
+  <header class="app-header container">
+    <a class="brand" href="index.html"><span class="brand-mark">R</span><span>Rota Acadêmica</span></a>
+    <div style="display:flex;gap:12px;align-items:center"><span data-user-chip class="header-tag"></span><button data-theme-toggle class="button button-ghost theme-toggle" type="button" title="Alternar tema claro/escuro" aria-label="Alternar tema claro ou escuro">🌙</button><a class="back-link" href="questionario.html">← Refazer questionário</a><button data-logout class="button button-ghost" type="button" style="min-height:36px;padding:6px 12px;font-size:.82rem">Sair</button></div>
+  </header>
+
+  <main class="container results-page">
+    <section class="results-intro">
+       <p class="eyebrow">ETAPA 3 DE 5</p>
+      <h1>Possibilidades para o seu perfil.</h1>
+      <p id="profile-summary">Analisamos suas respostas para encontrar caminhos compatíveis.</p>
+      <p class="ranking-note">Você pode marcar várias opções por pergunta — o ranking soma todos os seus interesses.</p>
+     </section>
+
+      <section id="entry-plan-card" class="entry-plan-card" hidden></section>
+
+      <section id="military-section" hidden aria-labelledby="military-title">
+        <div class="section-title-row"><div><p class="eyebrow">TRILHA MILITAR</p><h2 id="military-title">Sua carreira militar ideal</h2></div><span class="hint">Baseada nas 4 perguntas militares</span></div>
+        <p id="military-summary" class="ranking-note"></p>
+        <div id="military-results" class="course-grid"></div>
+        <div class="career-actions" style="margin-top:18px">
+          <button id="military-continue" class="button button-primary" type="button">Ver plano de estudos →</button>
+        </div>
+      </section>
+
+      <section id="courses-section" aria-labelledby="courses-title">
+       <div class="section-title-row"><h2 id="courses-title">Cursos sugeridos</h2><span class="hint">Vitrine com variedade de áreas — o ranking completo está abaixo.</span></div>
+      <div id="course-results" class="course-grid"></div>
+    </section>
+
+    <section id="institution-section" class="institutions-section" hidden aria-labelledby="institutions-title">
+      <div class="section-title-row"><div><p class="eyebrow">ESCOLHA ONDE ESTUDAR</p><h2 id="institutions-title">Instituições para <span id="selected-course-name"></span></h2></div></div>
+      <div id="region-quick" class="source-list" style="margin-bottom:12px" hidden></div>
+      <div class="filters" aria-label="Filtros de instituições">
+        <label>Estado<select id="state-filter"><option value="">Todos os estados</option></select></label>
+        <label>Cidade<select id="city-filter"><option value="">Todas as cidades</option></select></label>
+        <label>Categoria<select id="type-filter"><option value="">Todas as categorias</option><option value="Federal">Federal</option><option value="Estadual">Estadual</option><option value="Privada">Privada</option></select></label>
+      </div>
+      <p class="ranking-note">Ordem: CPC do curso, CC do curso e IGC institucional — ciclo oficial mais recente (CPC/IGC 2023, Portaria INEP 203/2025). Valores por curso/campus são demonstrativos: confirme no <a class="official-link" href="https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/indicadores-de-qualidade-da-educacao-superior/conceito-preliminar-de-curso-cpc" target="_blank" rel="noopener" style="margin:0">INEP/CPC ↗</a> e no <a class="official-link" href="https://emec.mec.gov.br/" target="_blank" rel="noopener" style="margin:0">e-MEC ↗</a>.</p>
+      <p id="institution-count" class="ranking-note"></p>
+      <div id="institution-results" class="institution-list"></div>
+      <div id="compare-bar" style="display:none;position:sticky;bottom:16px;margin-top:16px;padding:12px 16px;background:var(--navy);color:#fff;border-radius:10px;gap:12px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)">
+        <span id="compare-bar-text"></span>
+        <div style="display:flex;gap:10px">
+          <button id="compare-clear" class="button button-ghost" type="button" style="min-height:40px;color:#fff;border-color:rgba(255,255,255,.4)">Limpar</button>
+          <button id="compare-go" class="button button-primary" type="button" style="min-height:40px">Comparar agora ↓</button>
+        </div>
+      </div>
+      <section id="compare-section" hidden style="margin-top:20px" aria-labelledby="compare-title">
+        <div class="section-title-row"><div><p class="eyebrow">LADO A LADO</p><h2 id="compare-title">Comparar universidades</h2></div><span class="hint">O melhor valor de cada linha em destaque</span></div>
+        <div id="compare-grid" class="course-grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))"></div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

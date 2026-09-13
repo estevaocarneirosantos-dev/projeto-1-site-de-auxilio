@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carreira e salário | Rota Acadêmica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.gov.br">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="dns-prefetch" href="https://www.gov.br">
+  <link rel="dns-prefetch" href="https://www.salario.com.br">
+  <link rel="dns-prefetch" href="https://emec.mec.gov.br">
+  <link rel="dns-prefetch" href="https://www.eb.mil.br">
+  <link rel="dns-prefetch" href="https://www.marinha.mil.br">
+  <link rel="dns-prefetch" href="https://www2.fab.mil.br">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>try{var t=localStorage.getItem("rotaAcademica_theme")||"light";if(t==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./inep-data.js"></script><script src="./script.js" defer></script>
+</head>
+<body class="app-page" data-page="career">
+  <header class="app-header container">
+    <a class="brand" href="index.html"><span class="brand-mark">R</span><span>Rota Acadêmica</span></a>
+    <div style="display:flex;gap:12px;align-items:center"><span data-user-chip class="header-tag"></span><button data-theme-toggle class="button button-ghost theme-toggle" type="button" title="Alternar tema claro/escuro" aria-label="Alternar tema claro ou escuro">🌙</button><a class="back-link" href="resultados.html">← Voltar aos resultados</a><button data-logout class="button button-ghost" type="button" style="min-height:36px;padding:6px 12px;font-size:.82rem">Sair</button></div>
+  </header>
+
+  <main class="container results-page">
+    <section class="results-intro">
+      <p class="eyebrow">ETAPA 4 DE 5</p>
+      <h1 id="career-greeting">Veja como é o mercado do seu curso.</h1>
+      <p><strong id="career-course"></strong><br><span id="career-institution" class="hint"></span></p>
+    </section>
+
+    <section aria-labelledby="salary-title" class="career-section">
+      <div class="section-title-row"><h2 id="salary-title">Salário de referência no Brasil</h2><span id="salary-hint" class="hint">Valores CLT de referência nacional</span></div>
+      <div class="salary-grid">
+        <div class="salary-card"><span id="salary-label-initial">INICIAL</span><strong id="salary-initial">—</strong><small id="salary-sub-initial">Recém-formado / júnior</small></div>
+        <div class="salary-card highlight"><span id="salary-label-average">PISO MÉDIO</span><strong id="salary-average">—</strong><small id="salary-sub-average">Média / acordos coletivos</small></div>
+        <div class="salary-card"><span id="salary-label-ceiling">TETO</span><strong id="salary-ceiling">—</strong><small id="salary-sub-ceiling">Sênior / concursos / especialização</small></div>
+      </div>
+      <p id="salary-note" class="ranking-note">Referência a partir de dados oficiais do Novo CAGED / eSocial compilados por agregadores. Variam por estado, cidade, porte da empresa, nível e vínculo (CLT x concurso x autônomo). Confira sempre a fonte atualizada abaixo.</p>
+      <div id="salary-links" class="source-list"></div>
+    </section>
+
+    <section aria-labelledby="market-title" class="career-section">
+      <div class="section-title-row"><h2 id="market-title">Como funciona o mercado</h2></div>
+      <p id="market-text" class="market-text"></p>
+      <div class="market-grid">
+        <div class="market-card"><h3>Onde atuar</h3><ul id="market-acts"></ul></div>
+        <div class="market-card"><h3>Como entrar e crescer</h3><p id="market-entry"></p></div>
+      </div>
+    </section>
+
+    <section id="mil-detail" class="career-section" hidden>
+      <div class="section-title-row"><div><p class="eyebrow">CARREIRA MILITAR EM DETALHES</p><h2>Sua jornada até a farda</h2></div></div>
+      <div class="market-grid">
+        <div class="market-card"><h3>Tempo de formação</h3><p id="mil-training"></p></div>
+        <div class="market-card"><h3>Como crescer na profissão</h3><p id="mil-growth"></p></div>
+      </div>
+      <div class="market-card" style="margin-top:14px"><h3>O que mais cai na prova</h3><div id="mil-topics"></div><p class="ranking-note">Baseado em editais e provas anteriores; confira o conteúdo programático do edital vigente.</p></div>
+      <div class="market-card" style="margin-top:14px"><h3>TAF — como funciona na sua escola</h3><p id="mil-taf"></p><p class="ranking-note">Índices de referência das últimas edições; o índice oficial que vale é sempre o do edital vigente.</p></div>
+      <div class="market-card" style="margin-top:14px"><h3>Acompanhamento recomendado</h3><p>Não treine sozinho no escuro: faça <strong>avaliação médica</strong> antes de começar, treine com <strong>educador físico</strong> montando planilha para os exercícios exatos do seu TAF, simule a prova completa com cronômetro a cada 3 semanas, cuide de <strong>sono (8h), alimentação e hidratação</strong>, e concilie 4-5 treinos semanais com o cronograma de estudos. Físico se constrói em 3 a 6 meses — comece agora e chegue ao TAF com folga, não no limite.</p></div>
+    </section>
+
+    <section id="entry-path-card" class="entry-plan-card career-section" hidden></section>
+
+    <section class="career-section" aria-labelledby="sources-title">
+      <h2 id="sources-title">Fontes oficiais para conferir</h2>
+      <p class="ranking-note">Dados verdadeiros e atualizados mensalmente. Clique para pesquisar o cargo do seu interesse:</p>
+      <div class="source-list">
+        <a class="official-link" href="https://www.salario.com.br/tabela-salarial/" target="_blank" rel="noopener">Portal Salário — tabela por CBO/CAGED ↗</a>
+        <a class="official-link" href="https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/caged" target="_blank" rel="noopener">Novo CAGED — Ministério do Trabalho ↗</a>
+        <a class="official-link" href="https://cbo.mte.gov.br/" target="_blank" rel="noopener">CBO — Classificação de Ocupações ↗</a>
+        <a class="official-link" href="https://emec.mec.gov.br/" target="_blank" rel="noopener">e-MEC — cursos autorizados ↗</a>
+        <a class="official-link" href="https://enem.inep.gov.br/" target="_blank" rel="noopener">ENEM / INEP ↗</a>
+        <a class="official-link" href="https://www.gov.br/concursos/pt-br" target="_blank" rel="noopener">Portal Nacional de Concursos ↗</a>
+      </div>
+    </section>
+
+    <section class="career-actions">
+      <a class="button button-ghost" href="resultados.html">← Escolher outro curso</a>
+      <button id="go-schedule" class="button button-primary" type="button">Montar meu cronograma →</button>
+    </section>
+  </main>
+</body>
+</html>
