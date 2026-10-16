@@ -686,6 +686,8 @@ function passStrength(pass) {
 function getUsers() { try { return JSON.parse(localStorage.getItem(USERS_KEY) || "{}"); } catch { return {}; } }
 function saveUsers(u) { localStorage.setItem(USERS_KEY, JSON.stringify(u)); }
 function currentUser() { return localStorage.getItem(SESSION_KEY) || null; }
+const GUEST_USER = "visitante";
+function isGuest() { return (currentUser() || "").toLowerCase() === GUEST_USER; }
 function userKey() {
   const u = currentUser();
   return u ? `${STORAGE_KEY}_${u.toLowerCase()}` : STORAGE_KEY;
@@ -865,6 +867,8 @@ function initLogin() {
     form.hidden = n !== 1;
     stepChannel.hidden = n !== 2;
     stepCode.hidden = n !== 3;
+    const guestBlock = document.querySelector("#guest-block");
+    if (guestBlock) guestBlock.hidden = n !== 1;
   }
   function fail(msg) { err.textContent = msg; err.hidden = false; }
 
@@ -940,12 +944,15 @@ function initLogin() {
   contactEmailBtn.addEventListener("click", () => onContactBtn("email"));
   contactPhoneBtn.addEventListener("click", () => onContactBtn("phone"));
 
+  function isFirstVisit() {
+    try { return Object.keys(getUsers()).length === 0; } catch { return true; }
+  }
   function setMode(m) {
     mode = m;
     const isLogin = m === "login";
     modeLogin.classList.toggle("selected", isLogin);
     modeRegister.classList.toggle("selected", !isLogin);
-    title.textContent = isLogin ? "Bem-vindo de volta." : "Crie sua conta.";
+    title.textContent = !isLogin ? "Crie sua conta." : (isFirstVisit() ? "Seja bem-vindo ao Rota Acadêmica." : "Bem-vindo de volta.");
     sub.textContent = isLogin ? "Escolha entrar com e-mail, telefone ou usuário e confirme sua senha." : "Crie seu usuário, marque e-mail e/ou telefone e só então crie a senha.";
     submit.textContent = isLogin ? "Continuar →" : "Criar conta →";
     contactChoice.hidden = false;
@@ -969,6 +976,12 @@ function initLogin() {
   modeLogin.addEventListener("click", () => setMode("login"));
   modeRegister.addEventListener("click", () => setMode("register"));
   setMode("login");
+
+  const guestBtn = document.querySelector("#guest-enter");
+  if (guestBtn) guestBtn.addEventListener("click", () => {
+    try { localStorage.setItem(SESSION_KEY, GUEST_USER); } catch { /* sem armazenamento */ }
+    window.location.href = "index.html";
+  });
 
   function startSession(username) {
     migrateLegacyToUser(username);
@@ -1072,7 +1085,8 @@ function initLogin() {
 
 function initAuthUI() {
   const user = currentUser();
-  document.querySelectorAll("[data-user-chip]").forEach((el) => { el.textContent = user ? `👤 ${user}` : ""; });
+  const label = !user ? "" : (user.toLowerCase() === GUEST_USER ? "👤 Visitante · sem cadastro" : `👤 ${displayName(user)}`);
+  document.querySelectorAll("[data-user-chip]").forEach((el) => { el.textContent = label; });
   document.querySelectorAll("[data-logout]").forEach((btn) => btn.addEventListener("click", logout));
 }
 
