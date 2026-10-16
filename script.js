@@ -1936,14 +1936,23 @@ function initLanding() {
   if (hello) hello.textContent = displayName(username);
   const birthInput = document.querySelector("#student-birthdate");
   const profileErr = document.querySelector("#profile-error");
+  birthInput.setAttribute("autocomplete", "off");
   birthInput.addEventListener("input", () => {
     const masked = maskBirthLive(birthInput.value);
     if (masked !== birthInput.value) birthInput.value = masked;
     if (profileErr) profileErr.hidden = true;
   });
-  // Só a data de nascimento é mantida entre acessos; o resto abre em branco
-  const savedBirth = (getData().profile || {}).birthdate;
-  if (savedBirth) birthInput.value = savedBirth;
+  // Sem conta logada: abre sempre com os espaços reiniciados (sem datas antigas)
+  if (!currentUser()) {
+    form.reset();
+    birthInput.value = "";
+    try { localStorage.removeItem(STORAGE_KEY); } catch { /* sem armazenamento */ }
+    if (hello) hello.textContent = "estudante";
+  } else {
+    // Só a data de nascimento é mantida entre acessos; o resto abre em branco
+    const savedBirth = (getData().profile || {}).birthdate;
+    if (savedBirth) birthInput.value = savedBirth;
+  }
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const check = validBirthdate(birthInput.value);
