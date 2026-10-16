@@ -933,8 +933,8 @@ function initLogin() {
   }
   function onContactBtn(method) {
     if (mode === "register") {
-      // Criar conta: e-mail e/ou telefone (usuário é sempre pedido no campo próprio)
-      regContacts.has(method) ? regContacts.delete(method) : regContacts.add(method);
+      // Criar conta: apenas UMA opção (e-mail OU telefone)
+      regContacts = new Set([method]);
       paintContactButtons();
       refreshContactFields();
     } else {
