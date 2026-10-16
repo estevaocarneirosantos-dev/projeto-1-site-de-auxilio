@@ -892,13 +892,10 @@ function initLogin() {
   }
 
   function updatePassVisibility() {
+    // Senha sempre visível no cadastro, igual ao login
     if (mode !== "register") return;
-    const vals = [];
-    if (regContacts.has("email")) vals.push(emailInput.value);
-    if (regContacts.has("phone")) vals.push(phoneInput.value);
-    const show = vals.some((v) => v.trim().length >= 3);
-    passFieldLabel.hidden = !show;
-    passBox.hidden = !show;
+    passFieldLabel.hidden = false;
+    passBox.hidden = false;
   }
   emailInput.addEventListener("input", updatePassVisibility);
   phoneInput.addEventListener("input", updatePassVisibility);
@@ -953,7 +950,7 @@ function initLogin() {
     modeLogin.classList.toggle("selected", isLogin);
     modeRegister.classList.toggle("selected", !isLogin);
     title.textContent = !isLogin ? "Crie sua conta." : (isFirstVisit() ? "Seja bem-vindo ao Rota Acadêmica." : "Bem-vindo de volta.");
-    sub.textContent = isLogin ? "Escolha entrar com e-mail, telefone ou usuário e confirme sua senha." : "Crie seu usuário, marque e-mail e/ou telefone e só então crie a senha.";
+    sub.textContent = isLogin ? "Escolha entrar com e-mail, telefone ou usuário e confirme sua senha." : "Crie seu usuário, escolha e-mail ou telefone e crie sua senha.";
     submit.textContent = isLogin ? "Continuar →" : "Criar conta →";
     contactChoice.hidden = false;
     loginUserInput.required = !isLogin;
@@ -965,8 +962,8 @@ function initLogin() {
       regContacts = new Set(["email"]);
       paintContactButtons();
       refreshContactFields();
-      passFieldLabel.hidden = true;
-      passBox.hidden = true;
+      passFieldLabel.hidden = false;
+      passBox.hidden = false;
     }
     loginUserInput.placeholder = "ex.: maria.silva";
     document.querySelector("#label-login-user").childNodes[0].textContent = "Nome de usuário";
